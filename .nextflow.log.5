@@ -1,0 +1,41 @@
+Jun-28 16:18:03.706 [main] DEBUG nextflow.cli.Launcher - $> nextflow run test_scripts/mainscripts/TM01_main.nf
+Jun-28 16:18:03.766 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 20.11.0-edge
+Jun-28 16:18:03.782 [main] INFO  nextflow.cli.CmdRun - Launching `test_scripts/mainscripts/TM01_main.nf` [romantic_stonebraker] - revision: 09c39c1f0c
+Jun-28 16:18:03.813 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/e/postdoc/lodestone-ci/nextflow.config
+Jun-28 16:18:03.813 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/e/postdoc/lodestone-ci/nextflow.config
+Jun-28 16:18:03.832 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jun-28 16:18:04.620 [main] DEBUG nextflow.Session - Session uuid: b2d19bab-4630-4bed-84e0-e31a031339b5
+Jun-28 16:18:04.620 [main] DEBUG nextflow.Session - Run name: romantic_stonebraker
+Jun-28 16:18:04.621 [main] DEBUG nextflow.Session - Executor pool size: 6
+Jun-28 16:18:04.653 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 20.11.0-edge build 5448
+  Created: 16-11-2020 08:23 UTC (08:23 BST)
+  System: Linux 4.4.0-19041-Microsoft
+  Runtime: Groovy 3.0.5 on OpenJDK 64-Bit Server VM 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+  Encoding: UTF-8 (UTF-8)
+  Process: 31742@DESKTOP-D9LKC6Q [127.0.1.1]
+  CPUs: 6 - Mem: 15.9 GB (2.6 GB) - Swap: 48 GB (46.4 GB)
+Jun-28 16:18:04.707 [main] DEBUG nextflow.Session - Work-dir: /mnt/e/postdoc/lodestone-ci/work [wslfs]
+Jun-28 16:18:04.707 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/e/postdoc/lodestone-ci/test_scripts/mainscripts/bin
+Jun-28 16:18:04.752 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Jun-28 16:18:04.754 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-28 16:18:05.049 [main] DEBUG nextflow.Session - Session start invoked
+Jun-28 16:18:05.396 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-28 16:18:05.408 [main] DEBUG nextflow.Session - Session aborted -- Cause: Can't find a matching module file for include: ./testing_modules/workflows/TM01.nf
+Jun-28 16:18:05.421 [main] ERROR nextflow.cli.Launcher - Can't find a matching module file for include: ./testing_modules/workflows/TM01.nf
+java.nio.file.NoSuchFileException: Can't find a matching module file for include: ./testing_modules/workflows/TM01.nf
+	at nextflow.script.IncludeDef.realModulePath(IncludeDef.groovy:177)
+	at nextflow.script.IncludeDef.load0(IncludeDef.groovy:112)
+	at nextflow.script.IncludeDef$load0$1.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:139)
+	at Script_1857e0df.runScript(Script_1857e0df:7)
+	at nextflow.script.BaseScript.runDsl2(BaseScript.groovy:170)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:200)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:219)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:219)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:127)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:282)
+	at nextflow.cli.Launcher.run(Launcher.groovy:470)
+	at nextflow.cli.Launcher.main(Launcher.groovy:652)

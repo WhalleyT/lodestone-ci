@@ -4,8 +4,8 @@
 nextflow.enable.dsl=2
 
 // import subworkflows
-include {tm08} from './testing_modules/workflows/TM08.nf'
-include {clockwork} from './workflows/clockwork.nf'
+include {tm08} from './../workflows/TM08.nf'
+include {clockwork} from './../../tb-pipeline/workflows/clockwork.nf'
 
 /*
  ANSI escape codes to allow colour-coded output messages

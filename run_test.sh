@@ -14,17 +14,15 @@ done
 shift $((OPTIND -1))
 
 
-#command for running 
-cmd="NXF_VER=20.11.0-edge nextflow run"
-
 #databases
 bowtie="--bowtie2_index hg19_1kgmaj --bowtie_index_name hg19_1kgmaj"
 kraken="--kraken_db k2_pluspf_16gb"
+profile="-profile singularity"
 
 for id in "${test_args[@]}"; do
     script="test_scripts/mainscripts/${id}_main.nf"
     input_dir="data/$id"
     output_dir="${id}_out"
-    $cmd $script --input_dir $input_dir --output_dir output $bowtie $kraken
-    echo $cmd
+    nextflow run $cmd $script --input_dir $input_dir --output_dir output $bowtie $kraken $pattern $profile --pattern '*_{1,2}.fq.gz'
+    echo $script
 done

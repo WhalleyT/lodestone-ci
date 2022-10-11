@@ -1,12 +1,17 @@
-- name: Use S3cmd
-    uses: s3-actions/s3cmd@v1.2.0
-    with:
-        provider: aws
-        region: 'eu-central-1'
-        access_key: ${{ secrets.S3_ACCESS_KEY }}
-        secret_key: ${{ secrets.S3_SECRET_KEY }}
+# .github/workflows/ci.yml
 
-- name: Interact with object storage
-  run: |
-          s3cmd pull s3://genome-idx/kraken/k2_pluspf_8gb_20220607.tar.gz
-          tar -xvf k2_pluspf_8gb_20220607.tar.gz
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+          wget https://genome-idx.s3.amazonaws.com/kraken/k2_pluspf_16gb_20220908.tar.gz
+          tar -xvf k2_pluspf_8gb_20220607.tar.gz -c k2_pluspf_16gb/

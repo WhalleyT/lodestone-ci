@@ -9,16 +9,19 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  download_public_data:
+    runs-on: self-hosted
     steps:
     - name: download kraken
       run: |
-          mkdir k2_pluspf_16gb
           wget https://genome-idx.s3.amazonaws.com/kraken/k2_pluspf_16gb_20220908.tar.gz
-          tar -xvf k2_pluspf_16gb_20220908.tar.gz -C k2_pluspf_16gb/
     - name: download bowtie
       run: |
-          mkdir hg19_1kgmaj
           wget ftp://ftp.ccb.jhu.edu/pub/data/bowtie2_indexes/hg19_1kgmaj_bt2.zip
+  unzip_public_data:
+    steps:
+    - name: unzip
+      run: |
+          mkdir k2_pluspf_16gb hg19_1kgmaj
+          tar -xvf k2_pluspf_16gb_20220908.tar.gz -C k2_pluspf_16gb/
           unzip hg19_1kgmaj_bt2.zip -d hg19_1kgmaj

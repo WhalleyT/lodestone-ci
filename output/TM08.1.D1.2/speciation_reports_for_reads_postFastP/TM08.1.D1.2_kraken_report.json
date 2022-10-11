@@ -1,0 +1,102 @@
+{
+    "Thresholds": {
+        "reads": 5000,
+        "percentage": 0.5
+    },
+    "Family": [
+        {
+            "reads": 119919,
+            "percentage": 59.96,
+            "name": "Mycobacteriaceae",
+            "taxon_id": "1762"
+        },
+        {
+            "reads": 19728,
+            "percentage": 9.86,
+            "name": "Debaryomycetaceae",
+            "taxon_id": "766764"
+        },
+        {
+            "reads": 19703,
+            "percentage": 9.85,
+            "name": "Peptostreptococcaceae",
+            "taxon_id": "186804"
+        },
+        {
+            "reads": 19367,
+            "percentage": 9.68,
+            "name": "Enterobacteriaceae",
+            "taxon_id": "543"
+        },
+        {
+            "reads": 18996,
+            "percentage": 9.5,
+            "name": "Staphylococcaceae",
+            "taxon_id": "90964"
+        }
+    ],
+    "Genus": [
+        {
+            "reads": 119886,
+            "percentage": 59.94,
+            "name": "Mycobacterium",
+            "taxon_id": "1763"
+        },
+        {
+            "reads": 19727,
+            "percentage": 9.86,
+            "name": "Candida",
+            "taxon_id": "1535326"
+        },
+        {
+            "reads": 19669,
+            "percentage": 9.83,
+            "name": "Clostridioides",
+            "taxon_id": "1870884"
+        },
+        {
+            "reads": 18983,
+            "percentage": 9.49,
+            "name": "Staphylococcus",
+            "taxon_id": "1279"
+        }
+    ],
+    "Species": [
+        {
+            "reads": 23256,
+            "percentage": 11.63,
+            "name": "Mycobacterium tuberculosis",
+            "taxon_id": "1773"
+        },
+        {
+            "reads": 19676,
+            "percentage": 9.84,
+            "name": "Candida albicans",
+            "taxon_id": "5476"
+        },
+        {
+            "reads": 18932,
+            "percentage": 9.47,
+            "name": "Clostridioides difficile",
+            "taxon_id": "1496"
+        },
+        {
+            "reads": 72,
+            "percentage": 0.04,
+            "name": "Homo sapiens",
+            "taxon_id": "9606"
+        }
+    ],
+    "Mykrobe": "true",
+    "Species complex": [
+        {
+            "reads": 119308,
+            "percentage": 59.65,
+            "name": "Mycobacterium tuberculosis complex",
+            "taxon_id": "77643"
+        }
+    ],
+    "Warnings": [
+        "warning: sample is mixed or contaminated (contains reads from multiple non-human species)"
+    ]
+}

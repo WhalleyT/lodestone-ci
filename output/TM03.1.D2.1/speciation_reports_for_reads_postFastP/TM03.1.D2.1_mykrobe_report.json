@@ -1,0 +1,46 @@
+{
+    "TM03.1.D2.1": {
+        "susceptibility": {},
+        "phylogenetics": {
+            "phylo_group": {
+                "Non_tuberculosis_mycobacterium_complex": {
+                    "percent_coverage": 37.713,
+                    "median_depth": 4.0
+                }
+            },
+            "sub_complex": {
+                "Unknown": {
+                    "percent_coverage": -1,
+                    "median_depth": -1
+                }
+            },
+            "species": {
+                "Mycobacterium_kansasii": {
+                    "percent_coverage": 92.353,
+                    "median_depth": 4.0
+                }
+            },
+            "lineage": {
+                "Unknown": {
+                    "percent_coverage": -1,
+                    "median_depth": -1
+                }
+            }
+        },
+        "kmer": 21,
+        "probe_sets": [
+            "/usr/local/lib/python3.7/dist-packages/mykrobe/data/tb/tb-species-170421.fasta.gz",
+            "/usr/local/lib/python3.7/dist-packages/mykrobe/data/tb/tb-hunt-probe-set-jan-03-2019.fasta.gz",
+            "/usr/local/lib/python3.7/dist-packages/mykrobe/data/tb/tb.lineage.20200930.probes.fa.gz"
+        ],
+        "files": [
+            "TM03.1.D2.1_1.fq.gz",
+            "TM03.1.D2.1_2.fq.gz"
+        ],
+        "version": {
+            "mykrobe-predictor": "v0.9.0",
+            "mykrobe-atlas": "v0.9.0"
+        },
+        "genotype_model": "kmer_count"
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "TM03.1.D5.3": {
+        "susceptibility": {},
+        "phylogenetics": {
+            "phylo_group": {
+                "Non_tuberculosis_mycobacterium_complex": {
+                    "percent_coverage": 44.763,
+                    "median_depth": 18
+                }
+            },
+            "sub_complex": {
+                "Mycobacterium_chelonae_abscessus_complex": {
+                    "percent_coverage": 97.0,
+                    "median_depth": 17
+                }
+            },
+            "species": {
+                "Mycobacterium_chelonae": {
+                    "percent_coverage": 98.797,
+                    "median_depth": 16
+                }
+            },
+            "lineage": {
+                "Mycobacterium_chelonae_subsp_chelonae": {
+                    "percent_coverage": 95.445,
+                    "median_depth": 16
+                }
+            }
+        },
+        "kmer": 21,
+        "probe_sets": [
+            "/usr/local/lib/python3.7/dist-packages/mykrobe/data/tb/tb-species-170421.fasta.gz",
+            "/usr/local/lib/python3.7/dist-packages/mykrobe/data/tb/tb-hunt-probe-set-jan-03-2019.fasta.gz",
+            "/usr/local/lib/python3.7/dist-packages/mykrobe/data/tb/tb.lineage.20200930.probes.fa.gz"
+        ],
+        "files": [
+            "TM03.1.D5.3_1.fq.gz",
+            "TM03.1.D5.3_2.fq.gz"
+        ],
+        "version": {
+            "mykrobe-predictor": "v0.9.0",
+            "mykrobe-atlas": "v0.9.0"
+        },
+        "genotype_model": "kmer_count"
+    }
+}

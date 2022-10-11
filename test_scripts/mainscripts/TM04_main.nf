@@ -4,7 +4,7 @@
 nextflow.enable.dsl=2
 
 // import subworkflows
-include {tm04} from './../workflows/workflows/TM04.nf'
+include {tm04} from './../workflows/TM04.nf'
 include {clockwork} from './../../tb-pipeline/workflows/clockwork.nf'
 
 /*

@@ -1,0 +1,61 @@
+{
+    "Thresholds": {
+        "reads": 5000,
+        "percentage": 0.5
+    },
+    "Family": [
+        {
+            "reads": 100924,
+            "percentage": 50.21,
+            "name": "Mycobacteriaceae",
+            "taxon_id": "1762"
+        },
+        {
+            "reads": 99975,
+            "percentage": 49.74,
+            "name": "Hominidae",
+            "taxon_id": "9604"
+        }
+    ],
+    "Genus": [
+        {
+            "reads": 100902,
+            "percentage": 50.2,
+            "name": "Mycobacterium",
+            "taxon_id": "1763"
+        },
+        {
+            "reads": 99975,
+            "percentage": 49.74,
+            "name": "Homo",
+            "taxon_id": "9605"
+        }
+    ],
+    "Species": [
+        {
+            "reads": 99975,
+            "percentage": 49.74,
+            "name": "Homo sapiens",
+            "taxon_id": "9606"
+        },
+        {
+            "reads": 19519,
+            "percentage": 9.71,
+            "name": "Mycobacterium tuberculosis",
+            "taxon_id": "1773"
+        }
+    ],
+    "Mykrobe": "true",
+    "Species complex": [
+        {
+            "reads": 100428,
+            "percentage": 49.96,
+            "name": "Mycobacterium tuberculosis complex",
+            "taxon_id": "77643"
+        }
+    ],
+    "Warnings": [
+        "warning: sample is mixed or contaminated (contains reads from multiple non-human species). Contaminants (i.e. minority species) include one or more mycobacteria. Defer to Mykrobe report for superior mycobacterial classification",
+        "warning: top family classification is mycobacterial, but this is not consistent with top genus and species classifications"
+    ]
+}

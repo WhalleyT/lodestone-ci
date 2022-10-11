@@ -1,0 +1,193 @@
+{
+    "Thresholds": {
+        "reads": 5000,
+        "percentage": 0.5
+    },
+    "Family": [
+        {
+            "reads": 100935,
+            "percentage": 9.99,
+            "name": "Propionibacteriaceae",
+            "taxon_id": "31957"
+        },
+        {
+            "reads": 100918,
+            "percentage": 9.99,
+            "name": "Mycobacteriaceae",
+            "taxon_id": "1762"
+        },
+        {
+            "reads": 100911,
+            "percentage": 9.99,
+            "name": "Corynebacteriaceae",
+            "taxon_id": "1653"
+        },
+        {
+            "reads": 100066,
+            "percentage": 9.91,
+            "name": "Saccharomycetaceae",
+            "taxon_id": "4893"
+        },
+        {
+            "reads": 99662,
+            "percentage": 9.87,
+            "name": "Debaryomycetaceae",
+            "taxon_id": "766764"
+        },
+        {
+            "reads": 99468,
+            "percentage": 9.85,
+            "name": "Peptostreptococcaceae",
+            "taxon_id": "186804"
+        },
+        {
+            "reads": 98152,
+            "percentage": 9.72,
+            "name": "Cryptosporidiidae",
+            "taxon_id": "35082"
+        },
+        {
+            "reads": 97931,
+            "percentage": 9.7,
+            "name": "Enterobacteriaceae",
+            "taxon_id": "543"
+        },
+        {
+            "reads": 96998,
+            "percentage": 9.6,
+            "name": "Bacillaceae",
+            "taxon_id": "186817"
+        },
+        {
+            "reads": 96076,
+            "percentage": 9.51,
+            "name": "Staphylococcaceae",
+            "taxon_id": "90964"
+        }
+    ],
+    "Genus": [
+        {
+            "reads": 100922,
+            "percentage": 9.99,
+            "name": "Cutibacterium",
+            "taxon_id": "1912216"
+        },
+        {
+            "reads": 100911,
+            "percentage": 9.99,
+            "name": "Corynebacterium",
+            "taxon_id": "1716"
+        },
+        {
+            "reads": 100890,
+            "percentage": 9.99,
+            "name": "Mycobacterium",
+            "taxon_id": "1763"
+        },
+        {
+            "reads": 100017,
+            "percentage": 9.9,
+            "name": "Saccharomyces",
+            "taxon_id": "4930"
+        },
+        {
+            "reads": 99658,
+            "percentage": 9.87,
+            "name": "Candida",
+            "taxon_id": "1535326"
+        },
+        {
+            "reads": 99252,
+            "percentage": 9.83,
+            "name": "Clostridioides",
+            "taxon_id": "1870884"
+        },
+        {
+            "reads": 98152,
+            "percentage": 9.72,
+            "name": "Cryptosporidium",
+            "taxon_id": "5806"
+        },
+        {
+            "reads": 96924,
+            "percentage": 9.6,
+            "name": "Bacillus",
+            "taxon_id": "1386"
+        },
+        {
+            "reads": 96000,
+            "percentage": 9.5,
+            "name": "Staphylococcus",
+            "taxon_id": "1279"
+        },
+        {
+            "reads": 9825,
+            "percentage": 0.97,
+            "name": "Escherichia",
+            "taxon_id": "561"
+        }
+    ],
+    "Species": [
+        {
+            "reads": 99826,
+            "percentage": 9.88,
+            "name": "Cutibacterium acnes",
+            "taxon_id": "1747"
+        },
+        {
+            "reads": 99441,
+            "percentage": 9.85,
+            "name": "Candida albicans",
+            "taxon_id": "5476"
+        },
+        {
+            "reads": 99419,
+            "percentage": 9.84,
+            "name": "Saccharomyces cerevisiae",
+            "taxon_id": "4932"
+        },
+        {
+            "reads": 98152,
+            "percentage": 9.72,
+            "name": "Cryptosporidium parvum",
+            "taxon_id": "5807"
+        },
+        {
+            "reads": 95382,
+            "percentage": 9.44,
+            "name": "Clostridioides difficile",
+            "taxon_id": "1496"
+        },
+        {
+            "reads": 65963,
+            "percentage": 6.53,
+            "name": "Corynebacterium glutamicum",
+            "taxon_id": "1718"
+        },
+        {
+            "reads": 19832,
+            "percentage": 1.96,
+            "name": "Mycobacterium tuberculosis",
+            "taxon_id": "1773"
+        },
+        {
+            "reads": 8655,
+            "percentage": 0.86,
+            "name": "Staphylococcus aureus",
+            "taxon_id": "1280"
+        },
+        {
+            "reads": 1213,
+            "percentage": 0.12,
+            "name": "Homo sapiens",
+            "taxon_id": "9606"
+        }
+    ],
+    "Errors": [
+        "error: top family is not Mycobacteriaceae"
+    ],
+    "Mykrobe": "false",
+    "Warnings": [
+        "warning: sample is mixed or contaminated (contains reads from multiple non-human species). Contaminants (i.e. minority species) include one or more mycobacteria. Defer to Mykrobe report for superior mycobacterial classification"
+    ]
+}

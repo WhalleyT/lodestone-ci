@@ -12,6 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: download kraken
       run: |
           wget https://genome-idx.s3.amazonaws.com/kraken/k2_pluspf_16gb_20220908.tar.gz
           tar -xvf k2_pluspf_8gb_20220607.tar.gz -c k2_pluspf_16gb/

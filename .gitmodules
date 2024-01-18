@@ -1,3 +1,4 @@
-[submodule "tb-pipeline"]
-	path = tb-pipeline
-	url = https://github.com/Pathogen-Genomics-Cymru/tb-pipeline
+[submodule "lodestone"]
+	path = lodestone
+	url = git@github.com:WhalleyT/lodestone.git
+	branch = tbprofiler

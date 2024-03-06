@@ -2,35 +2,29 @@
 nextflow.enable.dsl = 2
 
 // import modules
-include {checkFqValidity} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {countReads} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {fastp} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {fastQC} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {kraken2} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {mykrobe} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {bowtie2} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {identifyBacterialContaminants} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {downloadContamGenomes} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {mapToContamFa} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {reKraken} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {reMykrobe} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {summarise} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {checkBamValidity} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
-include {bam2fastq} from '../../tb-pipeline/modules/preprocessingModules.nf' params(params)
+include {checkFqValidity} from '../../lodestone/modules/preprocessingModules.nf' params(params)
+include {countReads} from '../../lodestone/modules/preprocessingModules.nf' params(params)
+include {fastp} from '../../lodestone/modules/preprocessingModules.nf' params(params)
+include {fastQC} from '../../lodestone/modules/preprocessingModules.nf' params(params)
+include {checkBamValidity} from '../../lodestone/modules/preprocessingModules.nf' params(params)
+include {bam2fastq} from '../../lodestone/modules/preprocessingModules.nf' params(params)
+include {getversion} from '../../lodestone/modules/getversionModules.nf' params(params)
+
 
 // define workflow component
 workflow tm01 {
 
     take:
       input_files
-      krakenDB
-      bowtie_dir
-
+      
     main:
+    
+    getversion()
+    input_files_vjson = input_files.combine(getversion.out.getversion_json)
 
       if ( params.filetype == "bam" ) {
 
-          checkBamValidity(input_files)
+          checkBamValidity(input_files_vjson)
 
           bam2fastq(checkBamValidity.out.checkValidity_bam)
 
@@ -39,7 +33,7 @@ workflow tm01 {
 
       if ( params.filetype == "fastq" ) {
 
-          checkFqValidity(input_files)
+          checkFqValidity(input_files_vjson)
 
           countReads(checkFqValidity.out.checkValidity_fqs)
       }

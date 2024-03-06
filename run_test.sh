@@ -44,6 +44,10 @@ done
 shift $((OPTIND -1))
 
 #recursively copy and update any scripts into new location so we don't have to override basedir in NF
+cp -R -u -p lodestone/nextflow.config test_scripts/mainscripts
+cp -R -u -p lodestone/config test_scripts/mainscripts
+cp -R -u -p lodestone/singularity test_scripts/mainscripts
+cp -R -u -p lodestone/docker test_scripts/mainscripts
 cp -R -u -p lodestone/bin test_scripts/mainscripts
 
 ######
@@ -76,9 +80,9 @@ fi
 
 if [[ $profile == "" ]]; then
     #go to our default
-    profile="--profile climb"
+    profile="-profile climb"
 else
-    profile="--profile $profile"
+    profile="-profile $profile"
 fi
 
 if [[ $data == "" ]]; then
@@ -97,7 +101,7 @@ $bowtie_db $bowtie_index $kraken_db $profile --pattern '*_{1,2}.fq.gz' -with-rep
 for id in "${test_args[@]}"; do
     #set input and output and find test script
     script="test_scripts/mainscripts/${id}_main.nf"
-    input_dir="$data/$id"
+    input_dir="${data}${id}"
     output_dir="${id}_out"
     
     #run it

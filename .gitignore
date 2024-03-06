@@ -8,3 +8,4 @@ output/
 singularity/
 test_scripts/mainscripts/bin/
 test_scripts/mainscripts/bin/*
+.ipynb_checkpoints

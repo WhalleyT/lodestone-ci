@@ -8,11 +8,13 @@ usage () {
     \n\t\tMultiple arguments can be supplied but they must each have the -t flag before \
     \n\t\tthem e.g. -t TM01 -t TM02"
     
+    echo -e "\t-d <data>: Directory containing test data. Default = s3://microbial-bioin-sp3/Lodestone_Testing_1.0/"
     echo -e "\t-k <kraken_db>: Kraken2 database directory. Default = <empty>"
     echo -e "\t-b <bowtie_db>: Bowtie database directory. Default = <empty>"
     echo -e "\t-i <bowtie_index>: Bowtie index prefix. Default = <empty>"
     echo -e "\t-a <afanc_db>: Afanc database directory. Default = <empty>"
     echo -e "\t-r <resource_db>: Resource directory. Default = <empty>"
+    echo -e "\t-p <profile>: Nextflow profile. Default = climb"
     echo ""
     }
 
@@ -32,7 +34,7 @@ while getopts ":t:k:b:i:a:r:ph" opt; do
         i) index=$OPTARG;;
         a) afanc_db=$OPTARG;;
         r) resource_db=$OPTARG;;
-        p) profile="-profile singularity";;
+        p) profile="$OPTARG";;
         h) usage; exit;;
         \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
         :  ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
@@ -47,6 +49,8 @@ cp -R -u -p lodestone/bin test_scripts/mainscripts
 ######
 # If an arg is not empty, then we can add the flag to it to pass it into nextflow
 ######
+
+echo $profile
 
 if [[ $bowtie_db != "" ]]; then
     bowtie_db="--bowtie_index $bowtie_db"
@@ -70,11 +74,30 @@ if [[ $resource_db != "" ]]; then
     resource_db="--resource_dir $resource_db"
 fi
 
+if [[ $profile == "" ]]; then
+    #go to our default
+    profile="--profile climb"
+else
+    profile="--profile $profile"
+fi
+
+if [[ $data == "" ]]; then
+    #go to our default
+    data="s3://microbial-bioin-sp3/Lodestone_Testing_1.0/"
+fi
+
+#add trailing slash if needed
+data="${data%/}/"
+
+
+echo "Nextflow will run with the following invocation:"
+echo -e "\tnextflow run <test_module>.nf --input_dir ${data}<test_module> --output_dir output/<test_module> \
+$bowtie_db $bowtie_index $kraken_db $profile --pattern '*_{1,2}.fq.gz' -with-report"
 
 for id in "${test_args[@]}"; do
     #set input and output and find test script
     script="test_scripts/mainscripts/${id}_main.nf"
-    input_dir="data/$id"
+    input_dir="$data/$id"
     output_dir="${id}_out"
     
     #run it

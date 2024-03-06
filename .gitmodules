@@ -1,4 +1,4 @@
 [submodule "lodestone"]
 	path = lodestone
-	url = git@github.com:WhalleyT/lodestone.git
-	branch = tbprofiler
+	url = git@github.com:pathogen-genomics-cymru/lodestone.git
+	branch = ci-testing

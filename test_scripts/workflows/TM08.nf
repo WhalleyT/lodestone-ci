@@ -30,9 +30,9 @@ workflow tm08 {
 
     main:
       formatInput(input_files)
-      kraken2(formatinput.out.inputfqs, krakenDB.toList())
+      kraken2(formatInput.out.inputfqs, krakenDB.toList())
       mykrobe(kraken2.out.kraken2_fqs)
-      bowtie2(formatinput.out.inputfqs, bowtie_dir.toList())
+      bowtie2(formatInput.out.inputfqs, bowtie_dir.toList())
       identifyBacterialContaminants(mykrobe.out.mykrobe_report.join(kraken2.out.kraken2_report, by: 0))
       downloadContamGenomes(identifyBacterialContaminants.out.contam_list)
       mapToContamFa(bowtie2.out.bowtie2_fqs.join(downloadContamGenomes.out.contam_fa, by: 0))

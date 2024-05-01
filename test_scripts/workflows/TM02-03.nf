@@ -17,7 +17,7 @@ include {reMykrobe} from '../../modules/preprocessingModules.nf' params(params)
 include {summarise} from '../../modules/preprocessingModules.nf' params(params)
 include {checkBamValidity} from '../../modules/preprocessingModules.nf' params(params)
 include {bam2fastq} from '../../modules/preprocessingModules.nf' params(params)
-include {formatInput} from "../../modules/ciModules.nf" params(params)
+include {formatInput} from "../../lodestone/modules/ciModules.nf" params(params)
 
 // testing module for TM02 and TM03
 workflow tm02 {
@@ -30,7 +30,7 @@ workflow tm02 {
     main:
       formatInput(input_files)
       // TM02 START
-      kraken2(formatinput.out.inputfqs, krakenDB.toList())
+      kraken2(formatInput.out.inputfqs, krakenDB.toList())
       // TM03 START
       mykrobe(kraken2.out.kraken2_fqs)
 }

@@ -17,7 +17,7 @@ include {reMykrobe} from '../../lodestone/modules/preprocessingModules.nf' param
 include {summarise} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {checkBamValidity} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {bam2fastq} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {formatInput} from "../../modules/ciModules.nf" params(params)
+include {formatInput} from "../../lodestone/modules/ciModules.nf" params(params)
 
 /* TM05 test module
 */
@@ -32,9 +32,9 @@ workflow tm05 {
       formatInput(input_files)
       // kraken2 takes reads not subjected to QC
       // following block needed to create files necessary for TM05
-      kraken2(formatinput.out.inputfqs, krakenDB.toList())
+      kraken2(formatInput.out.inputfqs, krakenDB.toList())
       mykrobe(kraken2.out.kraken2_fqs)
-      bowtie2(formatinput.out.inputfqs, bowtie_dir.toList())
+      bowtie2(formatInput.out.inputfqs, bowtie_dir.toList())
       identifyBacterialContaminants(mykrobe.out.mykrobe_report.join(kraken2.out.kraken2_report, by: 0))
 
       // TM05 START

@@ -17,7 +17,7 @@ include {reMykrobe} from '../../lodestone/modules/preprocessingModules.nf' param
 include {summarise} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {checkBamValidity} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {bam2fastq} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {formatInput} from "../../modules/ciModules.nf" params(params)
+include {formatInput} from "../../lodestone/modules/ciModules.nf" params(params)
 
 /* TM05 test module
 */
@@ -31,5 +31,5 @@ workflow tm03 {
     main:
       formatInput(input_files)
       // TM03 START
-      mykrobe(formatinput.out.inputfqs)
+      mykrobe(formatInput.out.inputfqs)
 }

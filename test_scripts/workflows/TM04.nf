@@ -17,7 +17,7 @@ include {reMykrobe} from '../../lodestone/modules/preprocessingModules.nf' param
 include {summarise} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {checkBamValidity} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {bam2fastq} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {formatInput} from "../../modules/ciModules.nf" params(params)
+include {formatInput} from "../../lodestone/modules/ciModules.nf" params(params)
 
 /* TM04 test module
 this currently maps unfiltered reads to bowtieDB, rather that filtered reads coming out of kraken2
@@ -33,10 +33,10 @@ workflow tm04 {
       formatInput(input_files)
       // kraken2 takes reads not subjected to QC
       // following block needed to create files necessary for TM04
-      kraken2(formatinput.out.inputfqs, krakenDB.toList())
+      kraken2(formatInput.out.inputfqs, krakenDB.toList())
       mykrobe(kraken2.out.kraken2_fqs)
 
       // TM04 START: bowtie2 takes reads unfiltered by the kraken2 process
-      bowtie2(formatinput.out.inputfqs, bowtie_dir.toList())
+      bowtie2(formatInput.out.inputfqs, bowtie_dir.toList())
       identifyBacterialContaminants(mykrobe.out.mykrobe_report.join(kraken2.out.kraken2_report, by: 0))
 }

@@ -17,6 +17,7 @@ include {reMykrobe} from '../../modules/preprocessingModules.nf' params(params)
 include {summarise} from '../../modules/preprocessingModules.nf' params(params)
 include {checkBamValidity} from '../../modules/preprocessingModules.nf' params(params)
 include {bam2fastq} from '../../modules/preprocessingModules.nf' params(params)
+include {formatInput} from "../../lodestone/modules/ciModules.nf" params(params)
 
 // define workflow component
 workflow tm02 {
@@ -27,21 +28,7 @@ workflow tm02 {
       bowtie_dir
 
     main:
-      formatinput(input_files)
-      kraken2(formatinput.out.inputfqs, krakenDB.toList())
+      formatInput(input_files)
+      kraken2(formatInput.out.inputfqs, krakenDB.toList())
       mykrobe(kraken2.out.kraken2_fqs)
-}
-
-process formatinput {
-
-    input:
-    tuple val(sample_name), path(fq1), path(fq2)
-
-    output:
-    tuple val(sample_name), path(fq1), path(fq2), stdout, emit: inputfqs
-
-    script:
-    """
-    echo /${sample_name}/
-    """
 }

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -a
+
+
 usage () { 
     echo ""
     echo "bash run_test.h -t <test_ids> -k <kraken_db> -b <bowtie_db> -i <bowtie_index> -a <afanc_db> -r <resource_db>"; 
@@ -90,6 +93,11 @@ if [[ $data == "" ]]; then
     data="s3://microbial-bioin-sp3/Lodestone_Testing_1.0/"
 fi
 
+if [[ $test_args == "" ]]; then
+    echo "--test_args/-t must not be empty"
+    exit 1
+fi
+
 #add trailing slash if needed
 data="${data%/}/"
 
@@ -107,8 +115,11 @@ for id in "${test_args[@]}"; do
     #run it
     nextflow run $script --input_dir $input_dir --output_dir output \
     $bowtie_db $bowtie_index $kraken_db $profile \
-    --pattern '*_{1,2}.fq.gz' -with-report
+    --pattern '*_{1,2}.fq.gz' -with-report report.html
     
-    #mv report.html ${id}_report.html
-    #rm -r work/
+    if [ -f report.html ]; then
+        mv report.html ${id}_report.html
+    fi
+    
+    rm -rf work/
 done

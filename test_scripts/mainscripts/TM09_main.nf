@@ -5,7 +5,7 @@ nextflow.enable.dsl=2
 
 // import subworkflows
 include {tm09} from './../workflows/TM09.nf'
-include {preprocessing} from './../../tb-pipeline/workflows/preprocessing.nf'
+include {preprocessing} from './../../lodestone/workflows/preprocessing.nf'
 
 /*
  ANSI escape codes to allow colour-coded output messages

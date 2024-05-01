@@ -2,7 +2,7 @@
 nextflow.enable.dsl = 2
 
 // import modules
-include {alignToRef} from '../../tb-pipeline/modules/clockworkModules.nf' params(params)
+include {alignToRef} from '../../lodestone/modules/clockworkModules.nf' params(params)
 
 // define workflow component
 workflow tm09 {

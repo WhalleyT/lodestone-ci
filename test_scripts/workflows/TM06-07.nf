@@ -33,17 +33,3 @@ workflow tm06 {
       // TMO7 START
       reMykrobe(input_files)
 }
-
-process formatinput {
-
-    input:
-    tuple val(sample_name), path(fq1), path(fq2)
-
-    output:
-    tuple val(sample_name), path(fq1), path(fq2), stdout, emit: inputfqs
-
-    script:
-    """
-    echo /${sample_name}/
-    """
-}

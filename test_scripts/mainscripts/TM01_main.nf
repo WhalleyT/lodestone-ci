@@ -72,6 +72,7 @@ if ( ( params.filetype != "fastq" ) && ( params.filetype != "bam" ) ) {
 }
 
 
+
 log.info """
 ========================================================================
 M Y C O B A C T E R I A L  P I P E L I N E
@@ -111,6 +112,7 @@ workflow {
     if ( params.filetype == "fastq" ) {
         pattern = params.pattern
         reads = indir + pattern
+        println(reads)
         numfiles = file(reads) // count the number of files
 
         Channel.fromFilePairs(reads, flat: true, checkIfExists: true, size: -1)

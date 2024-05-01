@@ -2,11 +2,11 @@
 nextflow.enable.dsl = 2
 
 // import modules
-include {alignToRef} from '../../tb-pipeline/modules/clockworkModules.nf' params(params)
-include {callVarsMpileup} from '../../tb-pipeline/modules/clockworkModules.nf' params(params)
-include {callVarsCortex} from '../../tb-pipeline/modules/clockworkModules.nf' params(params)
-include {minos} from '../../tb-pipeline/modules/clockworkModules.nf' params(params)
-include {gvcf} from '../../tb-pipeline/modules/clockworkModules.nf' params(params)
+include {alignToRef} from '../../lodestone/modules/clockworkModules.nf' params(params)
+include {callVarsMpileup} from '../../lodestone/modules/clockworkModules.nf' params(params)
+include {callVarsCortex} from '../../lodestone/modules/clockworkModules.nf' params(params)
+include {minos} from '../../lodestone/modules/clockworkModules.nf' params(params)
+include {gvcf} from '../../lodestone/modules/clockworkModules.nf' params(params)
 
 // define workflow component
 workflow tm10 {

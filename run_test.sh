@@ -30,9 +30,11 @@ kraken_db=""
 afanc_db=""
 resource_db=""
 data=""
+refseq=""
+resources=""
 
 #parse arguments
-while getopts ":t:k:b:i:a:r:p:d:h" opt; do
+while getopts ":t:k:b:i:a:r:p:d:s:e:h" opt; do
     case $opt in
         t) test_args+=("$OPTARG");;
         k) kraken_db=$OPTARG;;
@@ -42,6 +44,9 @@ while getopts ":t:k:b:i:a:r:p:d:h" opt; do
         r) resource_db=$OPTARG;;
         p) profile="$OPTARG";;
 	d) data=$OPTARG;;
+	s) refseq=$OPTARG;;
+	e) resources=$OPTARG;;
+
         h) usage; exit;;
         \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
         :  ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
@@ -60,7 +65,6 @@ cp -R -u -p lodestone/bin test_scripts/mainscripts
 ######
 # If an arg is not empty, then we can add the flag to it to pass it into nextflow
 ######
-echo "data: $data"
 
 if [[ $bowtie_db != "" ]]; then
     bowtie_db="--bowtie2_index $bowtie_db"
@@ -101,13 +105,21 @@ if [[ $test_args == "" ]]; then
     exit 1
 fi
 
+if [[ $refseq != "" ]]; then
+	refseq="--refseq $refseq"
+fi
+
+if [[ $resources ]]; then
+	resources="--resource_dir $resources"
+fi
+
 #add trailing slash if needed
 data="${data%/}/"
 
 
 echo "Nextflow will run with the following invocation:"
 echo -e "\tnextflow run <test_module>.nf --input_dir ${data}<test_module> --output_dir output/<test_module> \
-$bowtie_db $bowtie_index $kraken_db $profile --pattern '*_{1,2}.fq.gz' -with-report"
+$bowtie_db $bowtie_index $kraken_db $profile $refseq $resources --pattern '*_{1,2}.fq.gz' -with-report"
 
 for id in "${test_args[@]}"; do
     #set input and output and find test script
@@ -117,7 +129,7 @@ for id in "${test_args[@]}"; do
     
     #run it
     nextflow run $script --input_dir $input_dir --output_dir output \
-    $bowtie_db $bowtie_index $kraken_db $profile \
+    $bowtie_db $bowtie_index $kraken_db $profile $afanc_db $refseq $resources \
     --pattern '*_{1,2}.fq.gz' -with-report report.html
     
     if [ -f report.html ]; then

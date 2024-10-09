@@ -12,13 +12,7 @@ include {bowtie2} from '../../lodestone/modules/preprocessingModules.nf' params(
 include {identifyBacterialContaminants} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {downloadContamGenomes} from '../../lodestone/modules/preprocessingModules.nf' params(params)
 include {mapToContamFa} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {reKraken} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {reMykrobe} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {summarise} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {checkBamValidity} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {bam2fastq} from '../../lodestone/modules/preprocessingModules.nf' params(params)
-include {formatInput} from "../../lodestone/modules/ciModules.nf" params(params)
-
+include {formatInput} from '../../modules/'
 /* TM05 test module
 */
 workflow tm05 {

@@ -63,11 +63,11 @@ cp -R -u -p lodestone/bin test_scripts/mainscripts
 echo "data: $data"
 
 if [[ $bowtie_db != "" ]]; then
-    bowtie_db="--bowtie_index $bowtie_db"
+    bowtie_db="--bowtie2_index $bowtie_db"
 fi
 
 if [[ $bowtie_index != "" ]]; then
-    bowtie_index_name="--bowtie_index $bowtie_index"
+    bowtie_index_name="--bowtie_index_name $bowtie_index"
 fi
 
 
@@ -124,5 +124,5 @@ for id in "${test_args[@]}"; do
         mv report.html ${id}_report.html
     fi
     
-    rm -rf work/
+    #rm -rf work/
 done

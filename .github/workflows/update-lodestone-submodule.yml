@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
         with: 
           repository: whalleyt/lodestone
-          token: ${{ secrets.LODESTONE-CI-TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           submodules: true
 
       - name: Pull & update submodules recursively

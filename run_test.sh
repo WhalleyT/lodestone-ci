@@ -2,6 +2,7 @@
 
 set -a
 
+#usage information
 
 usage () { 
     echo ""
@@ -21,15 +22,17 @@ usage () {
     echo ""
     }
 
+#set up empty variables
 profile=""
 bowtie_index=""
 bowtie_db=""
 kraken_db=""
 afanc_db=""
 resource_db=""
+data=""
 
-
-while getopts ":t:k:b:i:a:r:ph" opt; do
+#parse arguments
+while getopts ":t:k:b:i:a:r:p:d:h" opt; do
     case $opt in
         t) test_args+=("$OPTARG");;
         k) kraken_db=$OPTARG;;
@@ -38,6 +41,7 @@ while getopts ":t:k:b:i:a:r:ph" opt; do
         a) afanc_db=$OPTARG;;
         r) resource_db=$OPTARG;;
         p) profile="$OPTARG";;
+	d) data=$OPTARG;;
         h) usage; exit;;
         \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
         :  ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
@@ -56,8 +60,7 @@ cp -R -u -p lodestone/bin test_scripts/mainscripts
 ######
 # If an arg is not empty, then we can add the flag to it to pass it into nextflow
 ######
-
-echo $profile
+echo "data: $data"
 
 if [[ $bowtie_db != "" ]]; then
     bowtie_db="--bowtie_index $bowtie_db"

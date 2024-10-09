@@ -9,24 +9,23 @@ jobs:
   update:
     runs-on: ubuntu-latest
 
-  permissions:
-    contents: write
-    pull-requests: write
+    permissions:
+      contents: write
+      pull-requests: write
 
-
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
       with:
         repository: whalleyt/lodestone
         token: ${{ secrets.GITHUB_TOKEN }}
         submodules: true
 
-    - name: Pull & update submodules recursively
+      - name: Pull & update submodules recursively
       run: |
         git submodule update --init --recursive
         git submodule update --recursive --remote
 
-    - name: Commit
+      - name: Commit
       run: |
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions - update submodules"
